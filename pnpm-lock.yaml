@@ -1,12 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/crypto-js': ^4.1.1
   '@typescript-eslint/eslint-plugin': ^5.36.1
   '@typescript-eslint/parser': ^5.36.1
   '@unocss/preset-attributify': ^0.45.13
   '@unocss/preset-icons': ^0.45.13
   '@unocss/preset-uno': ^0.45.13
   '@vitejs/plugin-vue': ^3.0.3
+  crypto-js: ^4.1.1
   eslint: ^8.0.1
   eslint-config-prettier: ^8.5.0
   eslint-config-standard-with-typescript: ^22.0.0
@@ -31,9 +33,11 @@ specifiers:
   vue-tsc: ^0.39.5
 
 dependencies:
+  crypto-js: 4.1.1
   vue: 3.2.38
 
 devDependencies:
+  '@types/crypto-js': 4.1.1
   '@typescript-eslint/eslint-plugin': 5.36.1_lbwfnm54o3pmr3ypeqp3btnera
   '@typescript-eslint/parser': 5.36.1_yqf6kl63nyoq5megxukfnom5rm
   '@unocss/preset-attributify': 0.45.13
@@ -273,6 +277,10 @@ packages:
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    dev: true
+
+  /@types/crypto-js/4.1.1:
+    resolution: {integrity: sha512-BG7fQKZ689HIoc5h+6D2Dgq1fABRa0RbBWKBd9SP/MVRVXROflpm5fhwyATX5duFmbStzyzyycPB8qUYKDH3NA==}
     dev: true
 
   /@types/json-schema/7.0.11:
@@ -934,6 +942,10 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
     dev: true
+
+  /crypto-js/4.1.1:
+    resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
+    dev: false
 
   /css-render/0.15.11:
     resolution: {integrity: sha512-hnLrHPUndVUTF5nmNPRey6hpixK02IPUGdEsm2xRjvJuewToyrVFx9Nmai8rgfVzhTFo5SJVh2PHAtzaIV8JKw==}

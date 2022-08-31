@@ -13,9 +13,11 @@
     "prettier": "prettier --write"
   },
   "dependencies": {
+    "crypto-js": "^4.1.1",
     "vue": "^3.2.37"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.1.1",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "@unocss/preset-attributify": "^0.45.13",
