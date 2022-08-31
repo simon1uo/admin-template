@@ -1,11 +1,12 @@
 import { ConfigEnv, defineConfig, loadEnv } from "vite";
-import vue from "@vitejs/plugin-vue";
 
 import { convertEnv, getRootPath, getSrcPath } from "./build/utils";
 import { createViteProxy } from "./build/config/proxy";
+import { setupVitePlugins } from "./build/config/plugins";
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv: ConfigEnv) => {
+  const isBuild = configEnv.command === "build";
   const srcPath = getSrcPath();
   const rootPath = getRootPath();
 
@@ -27,7 +28,7 @@ export default defineConfig((configEnv: ConfigEnv) => {
       open: false,
       proxy: createViteProxy(VITE_USE_PROXY, VITE_PROXY_TYPE as ProxyType),
     },
-    plugins: [vue()],
+    plugins: setupVitePlugins(viteEnv, isBuild),
     css: {
       preprocessorOptions: {
         scss: {
