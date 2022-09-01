@@ -6,4 +6,10 @@ import './style.css'
 import 'uno.css'
 import '@/styles/index.scss'
 
-createApp(App).mount('#app')
+import { setupRouter } from '@/router'
+
+const app = createApp(App)
+
+setupRouter(app)
+
+app.mount('#app')
