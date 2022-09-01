@@ -11,7 +11,7 @@ export function getToken() {
   return lStorage.get(TOKEN_CODE)
 }
 
-export function reomveToken() {
+export function removeToken() {
   return lStorage.removeItem(TOKEN_CODE)
 }
 
