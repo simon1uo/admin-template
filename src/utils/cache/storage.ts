@@ -31,7 +31,7 @@ class Storager {
     const storageData: StorageData = {
       key: this.getKey(key),
       value,
-      expire: expire !== null ? new Date().getDate() + expire * 1000 : null,
+      expire: expire !== null ? new Date().getTime() + expire * 1000 : null,
     }
 
     const jsonEncryptData = encrypto(storageData)
@@ -39,26 +39,20 @@ class Storager {
   }
 
   get(key: string) {
-    const { value } = this.getItem(key, {})
-    return value
+    return this.getItem(key, {})
   }
 
   getItem(key: string, def: any = null) {
     const jsonEncryptData = this.storage.getItem(this.getKey(key))
-    if (!jsonEncryptData) return def
-    else {
+    if (jsonEncryptData) {
       let storageData: StorageData | null = null
-
       try {
         storageData = decrypto(jsonEncryptData)
-      } catch (err) {
-        this.removeItem(key)
-        return def
-      }
+      } catch {}
 
       if (storageData) {
         const { value, expire } = storageData
-        if (expire === null || expire > Date.now()) {
+        if (expire === null || expire >= Date.now()) {
           return value
         }
         this.removeItem(key)

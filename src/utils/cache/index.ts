@@ -1,6 +1,6 @@
-import { createStorage, StorageOption } from './storage'
+import { createStorage } from './storage'
 
-const prefixKey = 'ADMIN_TEMPLATE'
+const prefixKey = 'ADMIN_TEMPLATE_'
 
 export const createLocalStorage = function (prefixKey: string) {
   return createStorage({
