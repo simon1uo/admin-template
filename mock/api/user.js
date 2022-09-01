@@ -6,6 +6,7 @@ const users = {
     name: 'admin',
     email: 'simon1uo@163.com',
     role: ['admin'],
+    avatar: 'https://avatars.githubusercontent.com/u/60037549?v=4',
   },
   editor: {
     id: 2,
