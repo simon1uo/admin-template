@@ -29,7 +29,7 @@ export default [
       return {
         code: 0,
         data: {
-          ...headers(users[token] || users.guest),
+          ...(users[token] || users.guest),
         },
       }
     },
