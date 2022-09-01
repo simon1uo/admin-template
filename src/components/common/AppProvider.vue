@@ -29,7 +29,7 @@ const NaiveProviderContent = defineComponent({
 </script>
 
 <template>
-  <n-config-provider :theme-overrides="themeOverrides">
+  <n-config-provider wh-full :theme-overrides="themeOverrides">
     <n-loading-bar-provider>
       <n-dialog-provider>
         <n-notification-provider>
