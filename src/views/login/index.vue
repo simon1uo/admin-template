@@ -43,7 +43,6 @@ import { useRoute, useRouter } from 'vue-router'
 import api from '@/api'
 import { lStorage } from '@/utils/cache'
 import { setToken } from '@/utils/auth/token'
-import { is } from '~/src/utils/common'
 
 const title = import.meta.env.VITE_APP_TITLE
 
@@ -57,8 +56,6 @@ const loginInfo = ref({
 })
 
 const initLoginInfo = () => {
-  console.log('initLogin')
-
   const localLoginInfo = lStorage.get('loginInfo')
 
   if (localLoginInfo) {

@@ -25,7 +25,7 @@ export default [
     url: '/api/user',
     method: 'get',
     response: ({ headers }) => {
-      const token = resolveToken(headers?.authorizaiton)
+      const token = resolveToken(headers?.authorization)
       return {
         code: 0,
         data: {

@@ -50,6 +50,7 @@ export const useUserStore = defineStore('user', {
     async logout() {
       removeToken()
       this.userInfo = {}
+      window.$message?.success('退出登录成功')
       toLogin()
     },
     setUserInfo(userInfo = {}) {

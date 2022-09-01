@@ -37,6 +37,7 @@ export function createPermissionGurad(router: Router) {
     })
 
     const accessRoutes = permissionStore.generateRoutes(userStore.role)
+
     accessRoutes.forEach((route: RouteType) => {
       !router.hasRoute(route.name) && router.addRoute(route)
     })
