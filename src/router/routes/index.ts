@@ -1,4 +1,4 @@
-import { RoutesType } from '~/types/router'
+import { RouteModule, RoutesType } from '~/types/router'
 
 export const basicRoutes: RoutesType = [
   {
@@ -10,17 +10,11 @@ export const basicRoutes: RoutesType = [
       title: '登录页',
     },
   },
-  {
-    name: 'Dashboard',
-    path: '/dashboard',
-    component: () => import('@/views/dashboard/index.vue'),
-    meta: {
-      title: 'Dashboard',
-    },
-  },
-  {
-    name: 'Index',
-    path: '/',
-    redirect: '/dashboard',
-  },
 ]
+
+const modules = import.meta.glob('@/views/**/route.ts', { eager: true }) as RouteModule
+const asyncRoutes: RoutesType = []
+Object.keys(modules).forEach(key => {
+  asyncRoutes.push(modules[key].default)
+})
+export { asyncRoutes }
