@@ -10,7 +10,7 @@ interface UserInfo {
   role?: Array<string>
 }
 
-export const UserStore = defineStore('user', {
+export const useUserStore = defineStore('user', {
   state() {
     return {
       userInfo: <UserInfo>{},
