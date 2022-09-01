@@ -16,20 +16,11 @@ import { configUnocss } from './unocss'
 // mock
 import { configMock } from './mock'
 
-// unplugin 按需引入组件
-import Components from 'unplugin-vue-components/vite'
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+// unplugins
+import unplugin from './unplugin'
 
 export function setupVitePlugins(viteEnv: ViteEnv, isBuild: boolean): PluginOption[] {
-  const plugins = [
-    vue(),
-    VueSetupExtend(),
-    configHtmlPlugin(viteEnv, isBuild),
-    configUnocss(),
-    Components({
-      resolvers: [NaiveUiResolver()],
-    }),
-  ]
+  const plugins = [vue(), VueSetupExtend(), ...unplugin, configHtmlPlugin(viteEnv, isBuild), configUnocss()]
 
   if (viteEnv.VITE_USE_MOCK) {
     plugins.push(configMock(isBuild))

@@ -2,7 +2,7 @@ import { ConfigEnv, defineConfig, loadEnv } from 'vite'
 
 import { convertEnv, getRootPath, getSrcPath } from './build/utils'
 import { createViteProxy } from './build/config/proxy'
-import { setupVitePlugins } from './build/config/plugins'
+import { setupVitePlugins } from './build/plugins'
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv: ConfigEnv) => {
