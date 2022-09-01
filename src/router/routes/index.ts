@@ -7,25 +7,36 @@ export const basicRoutes: RoutesType = [
     component: () => import('@/views/login/index.vue'),
     isHidden: true,
     meta: {
-      title: '登录页',
+      title: '登录',
     },
   },
   {
-    name: 'Index',
+    name: 'Dashboard',
     path: '/',
     component: () => import('@/layout/index.vue'),
-    redirect: '/dashboard',
+    redirect: '/workbench',
     meta: {
       order: 0,
+      title: '控制台',
+      icon: 'mdi:home',
     },
     children: [
       {
-        name: 'Dashboard',
-        path: '/dashboard',
-        component: () => import('@/views/dashboard/index.vue'),
+        name: 'Workbench',
+        path: 'workbench',
+        component: () => import('@/views/dashboard/workbench/index.vue'),
         meta: {
-          title: 'Dashboard',
-          icon: 'mdi:home',
+          title: '工作台',
+          icon: 'mdi:clock',
+        },
+      },
+      {
+        name: 'Analysis',
+        path: 'analysis',
+        component: () => import('@/views/dashboard/analysis/index.vue'),
+        meta: {
+          title: '分析板',
+          icon: 'mdi:magnify-expand',
         },
       },
     ],
@@ -35,6 +46,36 @@ export const basicRoutes: RoutesType = [
     path: '/404',
     component: () => import('@/views/error/404.vue'),
     isHidden: true,
+  },
+  {
+    name: 'ExternalLink',
+    path: '/external',
+    component: () => import('@/layout/index.vue'),
+    meta: {
+      title: '外部链接',
+      icon: 'mdi:link',
+      order: 99,
+    },
+    children: [
+      {
+        name: 'GithubLink',
+        path: 'https://github.com/simon1uo/admin-template',
+        component: () => {},
+        meta: {
+          title: 'Github',
+          icon: 'ion:logo-github',
+        },
+      },
+      {
+        name: 'Docs',
+        path: 'https://github.com/simon1uo/admin-template',
+        component: () => {},
+        meta: {
+          title: 'Docs',
+          icon: 'ion:document',
+        },
+      },
+    ],
   },
 ]
 
