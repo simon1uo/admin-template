@@ -70,10 +70,7 @@ async function handleContextMenu(e: MouseEvent, tabItem: TabItem) {
       @click="handleTagClick(tab.path)"
       @close.stop="tabStore.removeTab(tab.path)"
       @contextmenu.prevent="handleContextMenu($event, tab)"
-      px-15
-      mx-5
-      rounded-4
-      cursor-pointer
+      class="ml-5 px-15 rounded-5 cursor-pointer"
     >
       {{ tab.title }}
     </n-tag>

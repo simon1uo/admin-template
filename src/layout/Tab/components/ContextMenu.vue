@@ -34,19 +34,19 @@ const options = computed(() => [
   },
   {
     label: '关闭其他',
-    key: 'close',
+    key: 'close-other',
     disabled: tabStore.tabs.length <= 1,
     icon: renderIcon('mdi:arrow-expand-horizontal', { size: 14 }),
   },
   {
     label: '关闭左侧',
-    key: 'close',
+    key: 'close-left',
     disabled: tabStore.tabs.length <= 1 || props.currentPath === tabStore.tabs[0].path,
     icon: renderIcon('mdi:arrow-expand-left', { size: 14 }),
   },
   {
-    label: '关闭左侧',
-    key: 'close',
+    label: '关闭右侧',
+    key: 'close-right',
     disabled: tabStore.tabs.length <= 1 || props.currentPath === tabStore.tabs[tabStore.tabs.length - 1].path,
     icon: renderIcon('mdi:arrow-expand-right', { size: 14 }),
   },

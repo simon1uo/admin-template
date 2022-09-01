@@ -47,7 +47,11 @@ function getMenuItem(route: RouteType, basePath = ''): MenuItem {
   }
 
   const visibleChildren = route.children ? route.children.filter((item: RouteType) => item.name && !item.isHidden) : []
+
+  if (!visibleChildren.length) return menuItem
+
   if (visibleChildren.length === 1) {
+    // 单个子路由处理
     const singleRoute = visibleChildren[0]
     menuItem = {
       label: singleRoute.meta?.title || singleRoute.name,
@@ -60,14 +64,13 @@ function getMenuItem(route: RouteType, basePath = ''): MenuItem {
       ? singleRoute.children.filter((item: RouteType) => item.name && !item.isHidden)
       : []
 
-    if (visibleItems.length === 1) {
-      menuItem = getMenuItem(visibleItems[0], menuItem.path)
-    } else if (visibleItems.length > 1) {
+    if (visibleItems.length === 1) menuItem = getMenuItem(visibleItems[0], menuItem.path)
+    else if (visibleItems.length > 1)
       menuItem.children = visibleItems.map(item => getMenuItem(item, menuItem.path)).sort((a, b) => a.order - b.order)
-    }
   } else {
     menuItem.children = visibleChildren.map(item => getMenuItem(item, menuItem.path)).sort((a, b) => a.order - b.order)
   }
+
   return menuItem
 }
 
