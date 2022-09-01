@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import { defineComponent, h } from 'vue'
-import { useDialog, useLoadingBar, useMessage, useNotification } from 'naive-ui'
-
-const themeOverrides = {
-  common: {
-    primaryColor: '#316C72FF',
-    primaryColorHover: '#316C72E3',
-    primaryColorPressed: '#2B4C59FF',
-    primaryColorSuppl: '#316C7263',
-  },
-}
+import { defineComponent, h, watch } from 'vue'
+import { GlobalThemeOverrides, useDialog, useLoadingBar, useMessage, useNotification } from 'naive-ui'
+import { useThemeStore } from '~/src/store'
+import { useCssVar } from '@vueuse/core'
+import { kebabCase } from 'lodash-es'
 
 function setupNaiveTools() {
   window.$loadingBar = useLoadingBar()
@@ -26,10 +20,37 @@ const NaiveProviderContent = defineComponent({
     return h('div')
   },
 })
+
+const themeStore = useThemeStore()
+
+type ThemeVars = Exclude<GlobalThemeOverrides['common'], undefined>
+type ThemeVarsKeys = keyof ThemeVars
+
+watch(
+  () => themeStore.naiveThemeOverrides.common,
+  common => {
+    for (const key in common) {
+      useCssVar(`--${kebabCase(key)}`, document.documentElement).value = common[key as ThemeVarsKeys] || ''
+      if (key === 'primaryColor') window.localStorage.setItem('__THEME_COLOR__', common[key as ThemeVarsKeys] || '')
+    }
+  },
+  { immediate: true }
+)
+
+watch(
+  () => themeStore.darkMode,
+  newValue => {
+    if (newValue) document.documentElement.classList.add('dark')
+    else document.documentElement.classList.remove('dark')
+  },
+  {
+    immediate: true,
+  }
+)
 </script>
 
 <template>
-  <n-config-provider wh-full :theme-overrides="themeOverrides">
+  <n-config-provider wh-full :theme-overrides="themeStore.naiveThemeOverrides" :theme="themeStore.naiveTheme">
     <n-loading-bar-provider>
       <n-dialog-provider>
         <n-notification-provider>

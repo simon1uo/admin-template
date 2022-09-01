@@ -11,6 +11,26 @@ export const basicRoutes: RoutesType = [
     },
   },
   {
+    name: 'Index',
+    path: '/',
+    component: () => import('@/layout/index.vue'),
+    redirect: '/dashboard',
+    meta: {
+      order: 0,
+    },
+    children: [
+      {
+        name: 'Dashboard',
+        path: '/dashboard',
+        component: () => import('@/views/dashboard/index.vue'),
+        meta: {
+          title: 'Dashboard',
+          icon: 'mdi:home',
+        },
+      },
+    ],
+  },
+  {
     name: '404',
     path: '/404',
     component: () => import('@/views/error/404.vue'),
