@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useDebounceFn } from '@vueuse/core'
-import { tr } from 'date-fns/locale'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 interface Props {

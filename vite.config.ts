@@ -35,13 +35,13 @@ export default defineConfig((configEnv: ConfigEnv) => {
         },
       },
     },
-    // build: {
-    //   reportCompressedSize: false,
-    //   sourcemap: false,
-    //   chunkSizeWarningLimit: 1024, // chunk 大小警告的限制（单位kb）
-    //   commonjsOptions: {
-    //     ignoreTryCatch: false,
-    //   },
-    // },
+    build: {
+      reportCompressedSize: false,
+      sourcemap: false,
+      chunkSizeWarningLimit: 1024, // chunk 大小警告的限制（单位kb）
+      commonjsOptions: {
+        ignoreTryCatch: false,
+      },
+    },
   }
 })
