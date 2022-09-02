@@ -19,11 +19,18 @@ import { configMock } from './mock'
 // unplugins
 import unplugin from './unplugin'
 
+// vite compression
+import viteCompression from 'vite-plugin-compression'
+
 export function setupVitePlugins(viteEnv: ViteEnv, isBuild: boolean): PluginOption[] {
   const plugins = [vue(), VueSetupExtend(), ...unplugin, configHtmlPlugin(viteEnv, isBuild), configUnocss()]
 
   if (viteEnv.VITE_USE_MOCK) {
     plugins.push(configMock(isBuild))
+  }
+
+  if (viteEnv.VITE_USE_COMPRESS) {
+    plugins.push(viteCompression({ algorithm: viteEnv.VITE_COMPRESS_TYPE || 'gzip' }))
   }
 
   if (isBuild) {
