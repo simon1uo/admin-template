@@ -2,6 +2,8 @@
 import MenuCollapse from './components/MenuCollapse.vue'
 import BreadCrumb from './components/BreadCrumb.vue'
 import UserAvatar from './components/UserAvatar.vue'
+import ThemeMode from './components/ThemeMode.vue'
+import FullScreen from './components/FullScreen.vue'
 </script>
 
 <template>
@@ -9,8 +11,12 @@ import UserAvatar from './components/UserAvatar.vue'
     <MenuCollapse />
     <BreadCrumb />
   </div>
-  <div ml-auto flex items-center>
-    <UserAvatar />
+  <div ml-auto>
+    <n-space items-center>
+      <FullScreen />
+      <ThemeMode />
+      <UserAvatar />
+    </n-space>
   </div>
 </template>
 
