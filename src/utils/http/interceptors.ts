@@ -1,5 +1,4 @@
 import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
-import { configProviderProps } from 'naive-ui'
 import { getToken } from '@/utils/auth/token'
 import { isWithoutToken } from './helpers'
 import { isNullOrUndef } from '../common'
@@ -47,6 +46,7 @@ export function resRejct(error: AxiosError) {
     switch (code) {
       case 400:
         message = message || ''
+        break
       case 401:
         message = message || '登录已过期'
         break
