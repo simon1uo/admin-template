@@ -7,7 +7,7 @@ export function configMock(isBuild: boolean) {
     prodEnabled: isBuild,
     injectCode: `
       import { setupProdMockServer } from '../mock'
-      setuptProdMockServer()
+      setupProdMockServer()
     `,
   })
 }
