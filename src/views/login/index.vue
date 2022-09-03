@@ -1,8 +1,8 @@
 <template>
-  <div h-full flex-col overflow-auto>
-    <div ma bg-gray-100 w-350 flex-col items-center border border-gray-300 p-30 rounded-10>
-      <h5 text-24 font-normal color="#6a6a6a">
-        {{ title }}
+  <div h-full flex-col overflow-auto bg-white>
+    <div ma bg-opcacity-60 w-500 flex-col items-start border card-shadow border-gray-300 p-30 rounded-10>
+      <h5 text-30 font-bold color="#6a6a6a" flex items-center>
+        <icon-custom-logo text-35 mr-10 /> 登录 <span op-60 text-25> / {{ title }} </span>
       </h5>
       <div mt-30 w-full>
         <n-input
@@ -34,6 +34,7 @@
         <n-button w-full h-50 rounded-5 text-16 type="primary" @click="handleLogin">登录</n-button>
       </div>
     </div>
+    <Footer my-30 />
   </div>
 </template>
 
@@ -43,6 +44,7 @@ import { useRoute, useRouter } from 'vue-router'
 import api from '@/api'
 import { lStorage } from '@/utils/cache'
 import { setToken } from '@/utils/auth/token'
+import Footer from '~/src/layout/Footer/index.vue'
 
 const title = import.meta.env.VITE_APP_TITLE
 
